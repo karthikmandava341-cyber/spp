@@ -1,23 +1,22 @@
 name: CI
+
 on:
-   push:
-   pull_request:
+  push:
+  pull_request:
 
-   jobs:
-       
-       tests:
-        
-         runs-on: ubuntu-latest
+jobs:
+  test:
 
-         steps:
-           
-              -uses: actions/checkout@v4
+    runs-on: ubuntu-latest
 
-            -uses: actions/setup-python@v5
-            
+    steps:
 
-            with:
-                python-version:"3.11"
-                        
-     --run:pip install pytest
-     -run:pytest -q     
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install pytest
+
+      - run: pytest -q
